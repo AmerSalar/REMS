@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\DepartmentController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ProductController;
 
 Route::apiResource('departments', DepartmentController::class);
 
@@ -50,4 +51,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+});
+
+Route::controller(ProductController:: class)->group(function () {
+  Route::get('/product', 'index');
+//   url + action inside of the controller 
 });
